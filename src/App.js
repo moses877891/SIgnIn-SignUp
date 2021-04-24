@@ -2,6 +2,7 @@ import React from 'react';
 
 import Header from "./components/header/header.component";
 import SignInSignUp from './pages/signIn&signUp.component';
+import SignedIn from './pages/signedIn/signedIn';
 import { auth, createuserProfileDocument } from './firebase/firebase.utils';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -46,7 +47,11 @@ class App extends React.Component {
     return (
       <div className="app">
         <Header currentUser={this.state.currentUser} />
-        <SignInSignUp />
+        {
+          !this.state.currentUser ? (<SignInSignUp />)
+            :
+            <SignedIn currentUser={this.state.currentUser} />
+        }
       </div>
     );
   }

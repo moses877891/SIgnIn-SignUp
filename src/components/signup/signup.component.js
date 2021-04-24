@@ -37,9 +37,8 @@ class SignUp extends React.Component {
                 confirmpassword: ''
             })
         } catch (error) {
-            console.log(error.message);
+            alert(error.message);
         }
-        console.log(this.state);
     }
 
     handleChange = (event) => {
@@ -50,7 +49,20 @@ class SignUp extends React.Component {
         return (
             <div className="align-items-center">
                 <h3>Don't have an account?</h3>
+                <span>create an account using e-mail & password</span>
                 <form onSubmit={this.handleSubmit} className="mt-4">
+                    <div className="form-group">
+                        <label htmlFor="displayName">displayName:</label>
+                        <input
+                            className="form-control col-12 col-sm-8"
+                            type="text"
+                            id="displayName"
+                            name="displayName"
+                            placeholder="Name"
+                            onChange={this.handleChange}
+                        />
+
+                    </div>
                     <div className="form-group">
                         <label htmlFor="email2">Email:</label>
                         <input

@@ -1,24 +1,26 @@
 import React from 'react';
 
 import { auth } from '../../firebase/firebase.utils';
+import { ImExit } from 'react-icons/im';
 import './header.styles.css';
 
 function Header({ currentUser }) {
     return (
-        <div className="container-fluid">
+        <div className="text-center">
             <nav className="navbar navbar-light bg-dark" style={{
-                borderBottomRightRadius: "1.3rem", borderBottomLeftRadius: "1.3rem"
+                borderBottomRightRadius: "15px", borderBottomLeftRadius: "15px"
             }}
             >
                 <a className="navbar-brand text-light" href="/">SignIn</a>
                 {
                     currentUser ?
-                        <div className="text-light point" onClick={() => auth.signOut()}>EXIT</div>
+                        <div className="text-light point" onClick={() => auth.signOut()}>
+                            <span className="mr-1">{currentUser.displayName}</span><ImExit />
+                        </div>
                         :
                         <div></div>
                 }
             </nav>
-
         </div>
 
     );
