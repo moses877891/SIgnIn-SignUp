@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+
 import { auth } from '../../firebase/firebase.utils';
 import { ImExit } from 'react-icons/im';
 import './header.styles.css';
@@ -13,12 +15,12 @@ function Header({ currentUser }) {
             >
                 <a className="navbar-brand text-light" href="/">SignIn</a>
                 {
-                    currentUser ?
+                    currentUser.userAuth === 1 ?
+                        <div></div>
+                        :
                         <div className="text-light point" onClick={() => auth.signOut()}>
                             <span className="mr-1">{currentUser.displayName}</span><ImExit />
                         </div>
-                        :
-                        <div></div>
                 }
             </nav>
         </div>
@@ -26,4 +28,8 @@ function Header({ currentUser }) {
     );
 }
 
-export default Header;
+const mapStateToProps = ({ user }) => ({
+    currentUser: user.currentUser
+});
+
+export default connect(mapStateToProps)(Header);

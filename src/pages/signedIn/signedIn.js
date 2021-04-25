@@ -1,4 +1,7 @@
 import React from 'react';
+
+import { connect } from 'react-redux';
+
 import './signedin.styles.css';
 import logo from '../../logo.svg';
 
@@ -12,4 +15,8 @@ const SignedIn = ({ currentUser }) => {
     )
 }
 
-export default SignedIn;
+const mapStateToProps = state => ({
+    currentUser: state.user.currentUser
+});
+
+export default connect(mapStateToProps)(SignedIn);
